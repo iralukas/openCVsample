@@ -11,8 +11,8 @@ while True:
     gray = cv2.GaussianBlur(gray, (21, 21), 0)
 
     ret, thresh = cv2.threshold(gray, 105, 255, cv2.THRESH_BINARY_INV)
-    (hm, wm) = frame.shape[:2]
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    
     if len(contours) > 0:
         c = max(contours, key=cv2.contourArea)
         x, y, w, h = cv2.boundingRect(c)
